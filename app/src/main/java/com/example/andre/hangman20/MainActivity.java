@@ -153,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
         TextView LetterFive = (TextView) findViewById(R.id.txtLetterFive);
 
         //plays music based on win/lose
-        //MediaPlayer losePlayer = MediaPlayer.create(this,R.raw.losersound);
-        //MediaPlayer winPlayer = MediaPlayer.create(this,R.raw.winnersong);
+        MediaPlayer losePlayer = MediaPlayer.create(this,R.raw.losersound);
+        MediaPlayer winPlayer = MediaPlayer.create(this,R.raw.winnersong);
 
         Button submit = (Button) findViewById(R.id.btnSubbmit);
         submit.setEnabled(false);
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             LetterFour.setText("!");
             LetterFive.setText("!");
             myMan.setImageResource(R.drawable.hang0);
-            //winPlayer.start();
+            winPlayer.start();
         }
         if (result.equals("lose")) {
             LetterOne.setText("L");
@@ -174,12 +174,14 @@ public class MainActivity extends AppCompatActivity {
             LetterThree.setText("S");
             LetterFour.setText("E");
             LetterFive.setText("!");
-            //losePlayer.start();
+            losePlayer.start();
         }
 
         String myWord = "";
-        for (int i=0; i<word.length;i++)
-            myWord+=word[i];
+        for(String theWord : word){
+            theWord+=word;
+            myWord=theWord;
+        }
         wrongs.setText(myWord);
 
     }
