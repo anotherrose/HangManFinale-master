@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             losePlayer.start();
         }
 
+        //shows winning word
         String myWord = "";
         for(String theWord : word){
             theWord+=word;
