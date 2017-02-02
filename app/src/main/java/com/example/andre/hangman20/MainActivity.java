@@ -180,8 +180,7 @@ public class MainActivity extends AppCompatActivity {
         //shows winning word
         String myWord = "";
         for(String theWord : word){
-            theWord+=word;
-            myWord=theWord;
+            myWord+=theWord;
         }
         wrongs.setText(myWord);
 
