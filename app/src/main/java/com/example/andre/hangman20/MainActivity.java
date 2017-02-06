@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         myMan = (ImageView) findViewById(R.id.imgMan);
-        myMan.setImageResource(R.drawable.hang0);
+        myMan.setImageResource(R.drawable.hang7);
 
         myDictionary = new Dictionary(getApplicationContext(),"words5.txt");
         words = myDictionary.getMyWords();
