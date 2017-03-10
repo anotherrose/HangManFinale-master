@@ -8,15 +8,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".FiveWordGame" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SevenWordGame"
+            android:label="@string/title_activity_seven_word_game"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainMenu" />
+        <activity android:name=".ThreeWordGame"></activity>
     </application>
 
 </manifest>

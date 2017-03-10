@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.andre.hangman20.MainActivity">
+    tools:context="com.example.andre.hangman20.FiveWordGame">
 
     <ImageView
         app:srcCompat="@drawable/hang0"
@@ -21,36 +21,7 @@
         android:layout_alignParentEnd="true"
         android:layout_height="200dp"
         android:layout_width="100dp"
-        android:src="@drawable/hang7" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/txtSubbmit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp"
-        android:textAlignment="center" />
-
-    <Button
-        android:text="submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnSubbmit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/txtSubbmit"
-        android:layout_alignStart="@+id/txtSubbmit" />
-
-    <Button
-        android:text="Reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/txtSubbmit"
-        android:layout_alignEnd="@+id/txtSubbmit"
-        android:id="@+id/btnReset" />
+        android:src="@drawable/hang0" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -124,11 +95,57 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="15dp"
         android:id="@+id/txtWrongLetters"
         android:textAlignment="center"
-        android:layout_above="@+id/txtSubbmit"
+        android:textSize="18sp"
+        android:layout_below="@+id/LyoWord"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp" />
+        android:layout_marginTop="41dp"
+        android:text="Letters Guessed: " />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/txtSubbmit"
+        android:textAlignment="center"
+        android:layout_below="@+id/txtWrongLetters"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:text="submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSubbmit"
+        android:layout_below="@+id/txtSubbmit"
+        android:layout_alignLeft="@+id/txtSubbmit"
+        android:layout_alignStart="@+id/txtSubbmit"
+        android:layout_marginTop="19dp" />
+
+    <Button
+        android:text="Reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReset"
+        android:layout_alignBaseline="@+id/btnSubbmit"
+        android:layout_alignBottom="@+id/btnSubbmit"
+        android:layout_alignRight="@+id/txtSubbmit"
+        android:layout_alignEnd="@+id/txtSubbmit" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:src="@android:drawable/ic_delete"
+        app:fabSize="normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exitToMenu"
+        android:nestedScrollingEnabled="false"
+        android:background="#f80606"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btnReset"
+        android:layout_marginTop="10dp" />/>
 
 </RelativeLayout>

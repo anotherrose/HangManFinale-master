@@ -8,7 +8,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="HANGMAN 3.0"
+            android:text="HANGMAN FINAL MASTER COMPLETE FINISHED MASTER FINAL DONE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
@@ -18,15 +18,5 @@
             android:textAlignment="center"
             android:textSize="48sp" />
 
-        <Button
-            android:text="PLAY"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="198dp"
-            android:id="@+id/btnPlay"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:textSize="36sp" />
     </RelativeLayout>
 </LinearLayout>
