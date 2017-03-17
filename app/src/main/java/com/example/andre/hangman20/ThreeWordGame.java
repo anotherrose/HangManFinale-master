@@ -1,5 +1,6 @@
 package com.example.andre.hangman20;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class ThreeWordGame extends AppCompatActivity {
         myMan = (ImageView) findViewById(R.id.imgMan);
         myMan.setImageResource(R.drawable.hang7);
 
-        myDictionary = new Dictionary(getApplicationContext(),"words5.txt");
+        myDictionary = new Dictionary(getApplicationContext(),"words3.txt");
         words = myDictionary.getMyWords();
         word =  createWords(words);
 
@@ -41,9 +42,9 @@ public class ThreeWordGame extends AppCompatActivity {
         final TextView LetterThree = (TextView) findViewById(R.id.txtLetterThree);
         wrongs = (TextView) findViewById(R.id.txtWrongLetters);
 
-        final EditText userSubbmit = (EditText) findViewById(R.id.txtSubbmit);
+        final EditText userSubbmit = (EditText) findViewById(R.id.txtSubmit);
 
-        final Button subbmit = (Button) findViewById(R.id.btnSubbmit);
+        final Button subbmit = (Button) findViewById(R.id.btnSubmit);
         final Button reset = (Button) findViewById(R.id.btnReset);
 
         subbmit.setOnClickListener(new View.OnClickListener() {
@@ -195,5 +196,10 @@ public class ThreeWordGame extends AppCompatActivity {
         letterGuessed3=false;
     }
 
+    public void exitToMenu(View view) {
+        resetGame();
+        Intent intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
+    }
 
 }

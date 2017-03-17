@@ -105,4 +105,20 @@
         android:layout_below="@+id/txtSubmit"
         android:layout_alignRight="@+id/txtSubmit"
         android:layout_alignEnd="@+id/txtSubmit" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:src="@android:drawable/ic_delete"
+        app:fabSize="normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exitToMenu"
+        android:nestedScrollingEnabled="false"
+        android:background="#e4f80606"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btnReset"
+        android:layout_marginTop="10dp" />
+
+
 </RelativeLayout>

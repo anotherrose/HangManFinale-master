@@ -1,9 +1,9 @@
 package com.example.andre.hangman20;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,9 +49,9 @@ public class SevenWordGame extends AppCompatActivity {
 
         wrongs = (TextView) findViewById(R.id.txtWrongLetters);
 
-        final EditText userSubbmit = (EditText) findViewById(R.id.txtSubbmit);
+        final EditText userSubbmit = (EditText) findViewById(R.id.txtSubmit);
 
-        final Button subbmit = (Button) findViewById(R.id.btnSubbmit);
+        final Button subbmit = (Button) findViewById(R.id.btnSubmit);
         final Button reset = (Button) findViewById(R.id.btnReset);
 
         subbmit.setOnClickListener(new View.OnClickListener() {
@@ -241,4 +241,9 @@ public class SevenWordGame extends AppCompatActivity {
         letterGuessed7=false;
     }
 
+    public void exitToMenu(View view) {
+        resetGame();
+        Intent intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
+    }
 }
