@@ -141,11 +141,11 @@
         android:layout_height="wrap_content"
         android:onClick="exitToMenu"
         android:nestedScrollingEnabled="false"
-        android:background="#f80606"
+        android:background="#e4f80606"
         android:clickable="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/btnReset"
-        android:layout_marginTop="10dp" />/>
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
