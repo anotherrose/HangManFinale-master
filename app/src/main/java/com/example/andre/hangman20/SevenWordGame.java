@@ -25,6 +25,15 @@ public class SevenWordGame extends AppCompatActivity {
     private boolean letterGuessed1,letterGuessed2,letterGuessed3,letterGuessed4,letterGuessed5,letterGuessed6,letterGuessed7=false;
     private String wrongLetters = " ";
     private TextView wrongs;
+    private TextView LetterOne;
+    private TextView LetterTwo;
+    private TextView LetterThree;
+    private TextView LetterFour;
+    private TextView LetterFive;
+    private TextView LetterSix;
+    private TextView LetterSeven;
+    private Button subbmit;
+    private EditText userSubbmit;
     //private ArrayList<TextView> LETTERS;
 
     @Override
@@ -35,94 +44,25 @@ public class SevenWordGame extends AppCompatActivity {
         myMan = (ImageView) findViewById(R.id.imgMan);
         myMan.setImageResource(R.drawable.hang7);
 
-        myDictionary = new Dictionary(getApplicationContext(),"words7.txt");
+        myDictionary = new Dictionary(getApplicationContext(), "words7.txt");
         words = myDictionary.getMyWords();
-        word =  createWords(words);
+        word = createWord(words);
 
-        final TextView LetterOne = (TextView) findViewById(R.id.txtLetterOne);
-        final TextView LetterTwo = (TextView) findViewById(R.id.txtLetterTwo);
-        final TextView LetterThree = (TextView) findViewById(R.id.txtLetterThree);
-        final TextView LetterFour = (TextView) findViewById(R.id.txtLetterFour);
-        final TextView LetterFive = (TextView) findViewById(R.id.txtLetterFive);
-        final TextView LetterSix = (TextView) findViewById(R.id.txtLetterSix);
-        final TextView LetterSeven = (TextView) findViewById(R.id.txtLetterSeven);
+        LetterOne = (TextView) findViewById(R.id.txtLetterOne);
+        LetterTwo = (TextView) findViewById(R.id.txtLetterTwo);
+        LetterThree = (TextView) findViewById(R.id.txtLetterThree);
+        LetterFour = (TextView) findViewById(R.id.txtLetterFour);
+        LetterFive = (TextView) findViewById(R.id.txtLetterFive);
+        LetterSix = (TextView) findViewById(R.id.txtLetterSix);
+        LetterSeven = (TextView) findViewById(R.id.txtLetterSeven);
 
         wrongs = (TextView) findViewById(R.id.txtWrongLetters);
 
-        final EditText userSubbmit = (EditText) findViewById(R.id.txtSubmit);
+        userSubbmit = (EditText) findViewById(R.id.txtSubmit);
 
-        final Button subbmit = (Button) findViewById(R.id.btnSubmit);
+        subbmit = (Button) findViewById(R.id.btnSubmit);
         final Button reset = (Button) findViewById(R.id.btnReset);
 
-        subbmit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //letter submitted by user
-                String l =  userSubbmit.getText().toString();
-                //checks if user put in two letters instead of one
-                if (l.length()>1) return;
-
-                //checks is the submitted letter matches any letters in chosen word
-                if (l.equals(word[0]) && !letterGuessed1) {
-                    LetterOne.setText(word[0]);
-                    score++;
-                    letterGuessed1=true;
-                }
-                if (l.equals(word[1]) && !letterGuessed2) {
-                    LetterTwo.setText(word[1]);
-                    score++;
-                    letterGuessed2=true;
-                }
-                if (l.equals(word[2]) && !letterGuessed3) {
-                    LetterThree.setText(word[2]);
-                    score++;
-                    letterGuessed3=true;
-                }
-                if (l.equals(word[3]) && !letterGuessed4) {
-                    LetterFour.setText(word[3]);
-                    score++;
-                    letterGuessed4=true;
-                }
-                if (l.equals(word[4]) && !letterGuessed5) {
-                    LetterFive.setText(word[4]);
-                    score++;
-                    letterGuessed5=true;
-                }
-                if (l.equals(word[5]) && !letterGuessed5) {
-                    LetterSix.setText(word[5]);
-                    score++;
-                    letterGuessed6=true;
-                }
-                if (l.equals(word[6]) && !letterGuessed5) {
-                    LetterSeven.setText(word[6]);
-                    score++;
-                    letterGuessed7=true;
-                }
-
-                //if the submitted letter does not match any letter in the word it "hangs" the man
-                if (    !l.equals(word[0]) &&
-                        !l.equals(word[1]) &&
-                        !l.equals(word[2]) &&
-                        !l.equals(word[3]) &&
-                        !l.equals(word[4]) &&
-                        !l.equals(word[5]) &&
-                        !l.equals(word[6])){
-                    strikes++;
-                    changeMan();
-                    wrongLetters = wrongLetters + l + " ";
-                    wrongs.setText(wrongLetters);
-                }
-
-                //checks if game has ended
-                if(score>=winLimit)
-                    endGame("win");//win
-                if (strikes>=loseLimit)
-                    endGame("lose");//lose
-
-                //clears text for next letter
-                userSubbmit.setText("");
-
-            }
-        });
 
         //resets the game to beggining
         reset.setOnClickListener(new View.OnClickListener() {
@@ -130,9 +70,11 @@ public class SevenWordGame extends AppCompatActivity {
                 resetGame();
             }
         });
+
     }
+
     //chooses and returns a random word in an array
-    private String[] createWords(ArrayList<String> myWords){
+    private String[] createWord(ArrayList<String> myWords){
         String[] usableWord = new String[myWords.get(0).length()];
         String word = myWords.get((int)(Math.random()*myWords.size()));
         for (int i = 0; i<myWords.get(0).length(); i++){
@@ -163,12 +105,6 @@ public class SevenWordGame extends AppCompatActivity {
 
     //shows end game based on win or lose
     private void endGame(String result){
-        TextView LetterOne = (TextView) findViewById(R.id.txtLetterOne);
-        TextView LetterTwo = (TextView) findViewById(R.id.txtLetterTwo);
-        TextView LetterThree = (TextView) findViewById(R.id.txtLetterThree);
-        TextView LetterFour = (TextView) findViewById(R.id.txtLetterFour);
-        TextView LetterFive = (TextView) findViewById(R.id.txtLetterFive);
-
         //plays music based on win/lose
         MediaPlayer losePlayer = MediaPlayer.create(this,R.raw.losersound);
         MediaPlayer winPlayer = MediaPlayer.create(this,R.raw.winnersong);
@@ -182,6 +118,8 @@ public class SevenWordGame extends AppCompatActivity {
             LetterThree.setText("N");
             LetterFour.setText("!");
             LetterFive.setText("!");
+            LetterSix.setText("");
+            LetterSeven.setText("");
             myMan.setImageResource(R.drawable.hang0);
             winPlayer.start();
         }
@@ -191,6 +129,8 @@ public class SevenWordGame extends AppCompatActivity {
             LetterThree.setText("S");
             LetterFour.setText("E");
             LetterFive.setText("!");
+            LetterSix.setText("");
+            LetterSeven.setText("");
             losePlayer.start();
         }
 
@@ -208,21 +148,15 @@ public class SevenWordGame extends AppCompatActivity {
         strikes = 0;
         score = 0;
 
-        final EditText userSubbmit = (EditText) findViewById(R.id.txtSubbmit);
-        TextView LetterOne = (TextView) findViewById(R.id.txtLetterOne);
-        TextView LetterTwo = (TextView) findViewById(R.id.txtLetterTwo);
-        TextView LetterThree = (TextView) findViewById(R.id.txtLetterThree);
-        TextView LetterFour = (TextView) findViewById(R.id.txtLetterFour);
-        TextView LetterFive = (TextView) findViewById(R.id.txtLetterFive);
-
-        Button submit = (Button) findViewById(R.id.btnSubbmit);
-        submit.setEnabled(true);
+        subbmit.setEnabled(true);
 
         LetterOne.setText("");
         LetterTwo.setText("");
         LetterThree.setText("");
         LetterFour.setText("");
         LetterFive.setText("");
+        LetterSix.setText("");
+        LetterSeven.setText("");
 
         userSubbmit.setText("");
         wrongs.setText("");
@@ -230,7 +164,7 @@ public class SevenWordGame extends AppCompatActivity {
 
         myMan.setImageResource(R.drawable.hang0);
 
-        word = createWords(words);
+        word = createWord(words);
 
         letterGuessed1=false;
         letterGuessed2=false;
@@ -245,5 +179,73 @@ public class SevenWordGame extends AppCompatActivity {
         resetGame();
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
+    }
+
+    public void submitLetter(View view) {
+        //letter submitted by user
+        String l =  userSubbmit.getText().toString();
+        //checks if user put in two letters instead of one
+        if (l.length()>1) return;
+
+        //checks is the submitted letter matches any letters in chosen word
+        if (l.equals(word[0]) && !letterGuessed1) {
+            LetterOne.setText(word[0]);
+            score++;
+            letterGuessed1=true;
+        }
+        if (l.equals(word[1]) && !letterGuessed2) {
+            LetterTwo.setText(word[1]);
+            score++;
+            letterGuessed2=true;
+        }
+        if (l.equals(word[2]) && !letterGuessed3) {
+            LetterThree.setText(word[2]);
+            score++;
+            letterGuessed3=true;
+        }
+        if (l.equals(word[3]) && !letterGuessed4) {
+            LetterFour.setText(word[3]);
+            score++;
+            letterGuessed4=true;
+        }
+        if (l.equals(word[4]) && !letterGuessed5) {
+            LetterFive.setText(word[4]);
+            score++;
+            letterGuessed5=true;
+        }
+        if (l.equals(word[5]) && !letterGuessed5) {
+            LetterSix.setText(word[5]);
+            score++;
+            letterGuessed6=true;
+        }
+        if (l.equals(word[6]) && !letterGuessed5) {
+            LetterSeven.setText(word[6]);
+            score++;
+            letterGuessed7=true;
+        }
+
+        //if the submitted letter does not match any letter in the word it "hangs" the man
+        if (    !l.equals(word[0]) &&
+                !l.equals(word[1]) &&
+                !l.equals(word[2]) &&
+                !l.equals(word[3]) &&
+                !l.equals(word[4]) &&
+                !l.equals(word[5]) &&
+                !l.equals(word[6])){
+            strikes++;
+            changeMan();
+            wrongLetters = wrongLetters + l + " ";
+            wrongs.setText(wrongLetters);
+        }
+
+        //checks if game has ended
+        if(score>=winLimit)
+            endGame("win");//win
+        if (strikes>=loseLimit)
+            endGame("lose");//lose
+
+        //clears text for next letter
+        userSubbmit.setText("");
+
     }
 }
