@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -120,6 +121,7 @@ public class FiveWordGame extends AppCompatActivity {
     private String[] createWords(ArrayList<String> myWords){
         String[] usableWord = new String[myWords.get(0).length()];
         String word = myWords.get((int)(Math.random()*myWords.size()));
+        Log.i("word", word);
         for (int i = 0; i<word.length(); i++){
             usableWord[i]=word.substring(i,i+1);
         }

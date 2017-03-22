@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +43,7 @@ public class SevenWordGame extends AppCompatActivity {
         setContentView(R.layout.content_seven_word_game);
 
         myMan = (ImageView) findViewById(R.id.imgMan);
-        myMan.setImageResource(R.drawable.hang7);
+        myMan.setImageResource(R.drawable.hang0);
 
         myDictionary = new Dictionary(getApplicationContext(), "words7.txt");
         words = myDictionary.getMyWords();
@@ -59,11 +60,9 @@ public class SevenWordGame extends AppCompatActivity {
         wrongs = (TextView) findViewById(R.id.txtWrongLetters);
 
         userSubbmit = (EditText) findViewById(R.id.txtSubmit);
-
         subbmit = (Button) findViewById(R.id.btnSubmit);
+
         final Button reset = (Button) findViewById(R.id.btnReset);
-
-
         //resets the game to beggining
         reset.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -77,6 +76,7 @@ public class SevenWordGame extends AppCompatActivity {
     private String[] createWord(ArrayList<String> myWords){
         String[] usableWord = new String[myWords.get(0).length()];
         String word = myWords.get((int)(Math.random()*myWords.size()));
+        Log.i("word", word);
         for (int i = 0; i<myWords.get(0).length(); i++){
             usableWord[i]=word.substring(i,i+1);
         }
@@ -109,8 +109,8 @@ public class SevenWordGame extends AppCompatActivity {
         MediaPlayer losePlayer = MediaPlayer.create(this,R.raw.losersound);
         MediaPlayer winPlayer = MediaPlayer.create(this,R.raw.winnersong);
 
-        Button submit = (Button) findViewById(R.id.btnSubbmit);
-        submit.setEnabled(false);
+        subbmit = (Button) findViewById(R.id.btnSubbmit);
+        subbmit.setEnabled(false);
 
         if (result.equals("win")) {
             LetterOne.setText("W");

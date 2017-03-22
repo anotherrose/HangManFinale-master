@@ -87,14 +87,15 @@
         android:gravity="center_vertical|center_horizontal" />
 
     <Button
-        android:text="submit"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSubmit"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/txtSubmit"
         android:layout_alignLeft="@+id/txtSubmit"
-        android:layout_alignStart="@+id/txtSubmit" />
+        android:layout_alignStart="@+id/txtSubmit"
+        android:layout_below="@+id/txtSubmit"
+        android:layout_marginTop="25dp"
+        android:onClick="submitLetter"
+        android:text="submit" />
 
     <Button
         android:text="Reset"
