@@ -109,7 +109,6 @@ public class SevenWordGame extends AppCompatActivity {
         MediaPlayer losePlayer = MediaPlayer.create(this,R.raw.losersound);
         MediaPlayer winPlayer = MediaPlayer.create(this,R.raw.winnersong);
 
-        subbmit = (Button) findViewById(R.id.btnSubbmit);
         subbmit.setEnabled(false);
 
         if (result.equals("win")) {
@@ -213,12 +212,12 @@ public class SevenWordGame extends AppCompatActivity {
             score++;
             letterGuessed5=true;
         }
-        if (l.equals(word[5]) && !letterGuessed5) {
+        if (l.equals(word[5]) && !letterGuessed6) {
             LetterSix.setText(word[5]);
             score++;
             letterGuessed6=true;
         }
-        if (l.equals(word[6]) && !letterGuessed5) {
+        if (l.equals(word[6]) && !letterGuessed7) {
             LetterSeven.setText(word[6]);
             score++;
             letterGuessed7=true;
