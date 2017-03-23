@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/imgMan"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="13dp"
